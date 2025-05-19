@@ -22,6 +22,7 @@ struct meta_block
 	size_t size;
 	struct meta_block *next;
 	int free;
+
 	union
 	{
 		long l;
