@@ -62,7 +62,7 @@ void *_malloc(size_t size)
 		}
 		else
 		{
-			block->free = 0
+			block->free = 0;
 		}
 	}
 	return (block + 1);
