@@ -11,21 +11,23 @@
     #include <stdalign.h>
     #define ALIGNMENT alignof(max_align_t)
 #else
-    #define ALIGNMENT sizeof(void*)
+    #define ALIGNMENT sizeof(void *)
 #endif
 
 #define ALIGN_UP(x, a)   (((x) + ((a) - 1)) & ~((a) - 1))
 #define META_SIZE ALIGN_UP(sizeof(struct meta_block), ALIGNMENT)
 
-struct meta_block {
+struct meta_block
+{
 	size_t size;
 	struct meta_block *next;
 	int free;
-	union {
-        long l;
-        void *p;
-        double d;
-        long double ld;
+	union
+	{
+		long l;
+		void *p;
+		double d;
+		long double ld;
     } align;
 };
 
