@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stddef.h>
+#include <stdint.h>
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
     #include <stdalign.h>
     #define ALIGNMENT alignof(max_align_t)

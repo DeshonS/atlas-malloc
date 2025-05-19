@@ -13,14 +13,15 @@ struct meta_block *find_free_block(struct meta_block **last, size_t size) {
 
 struct meta_block *request_space(struct meta_block* last, size_t size)
 {
-	struct meta_block *block;
-	block = sbrk(0);
-	void *request = sbrk(size + META_SIZE);
-	assert((void*)block == request);
-	if (request == (void*) -1)
+	void *raw = sbrk(META_SIZE + ALIGNMENT + size);
+	if (raw == (void *)-1)
 	{
 		return NULL;
 	}
+
+	uintptr_t base = (uintptr_t)raw + META_SIZE;
+	uintptr_t aligned = ALIGN_UP(base, ALIGNMENT);
+	struct meta_block *block = (struct meta_block *)(aligned - META_SIZE);
 
 	if (last)
 	{
