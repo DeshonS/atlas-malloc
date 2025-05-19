@@ -24,7 +24,7 @@ struct meta_block *request_space(struct meta_block* last, size_t size)
 
 	if (last)
 	{
-		nast->next = block;
+		last->next = block;
 	}
 	block->size = size;
 	block->next = NULL;

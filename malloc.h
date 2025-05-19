@@ -10,6 +10,7 @@ struct meta_block {
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <stddef.h>
 
 void *_malloc(size_t size);
 struct meta_block *request_space(struct meta_block* last, size_t size);
