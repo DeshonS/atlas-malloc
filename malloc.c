@@ -65,5 +65,5 @@ void *_malloc(size_t size)
 			block->free = 0;
 		}
 	}
-	return (block + 1);
+	return (void *)((char *)block + META_SIZE);
 }
