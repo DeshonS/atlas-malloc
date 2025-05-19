@@ -23,8 +23,8 @@ struct meta_block
 	size_t size;
 	struct meta_block *next;
 	int free;
-	alignas(max_align_t) char _align_pad;
 
+	alignas(max_align_t) char _align_pad;
 };
 
 
