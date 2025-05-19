@@ -1,5 +1,7 @@
 #include "malloc.h"
 
+void *global_base = NULL;
+
 struct meta_block *find_free_block(struct meta_block **last, size_t size) {
 	struct meta_block *current = global_base;
 	while (current && !(current->free && current->size >= size)) {
