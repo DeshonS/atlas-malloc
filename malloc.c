@@ -2,21 +2,25 @@
 
 void *global_base = NULL;
 
-struct meta_block *find_free_block(struct meta_block **last, size_t size) {
+struct meta_block *find_free_block(struct meta_block **last, size_t size)
+{
 	struct meta_block *current = global_base;
-	while (current && !(current->free && current->size >= size)) {
+
+	while (current && !(current->free && current->size >= size))
+	{
 		*last = current;
 		current = current->next;
 	}
 	return current;
 }
 
-struct meta_block *request_space(struct meta_block* last, size_t size)
+struct meta_block *request_space(struct meta_block *last, size_t size)
 {
 	void *raw = sbrk(META_SIZE + ALIGNMENT + size);
+
 	if (raw == (void *)-1)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	uintptr_t base = (uintptr_t)raw + META_SIZE;
