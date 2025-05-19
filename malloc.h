@@ -23,13 +23,7 @@ struct meta_block
 	size_t size;
 	struct meta_block *next;
 	int free;
-	union
-	{
-		long l;
-		void *p;
-		double d;
-		long double ld;
-	} align;
+	alignas(max_align_t) char _align_pad;
 };
 
 
