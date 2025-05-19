@@ -3,6 +3,15 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stddef.h>
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+    #include <stdalign.h>
+    #define ALIGNMENT alignof(max_align_t)
+#else
+    #define ALIGNMENT sizeof(void*)
+#endif
+
+#define ALIGN_UP(x, a)   (((x) + ((a) - 1)) & ~((a) - 1))
+#define META_SIZE ALIGN_UP(sizeof(struct meta_block), ALIGNMENT)
 
 struct meta_block {
 	size_t size;
