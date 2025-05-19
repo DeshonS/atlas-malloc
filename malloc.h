@@ -22,7 +22,6 @@ struct meta_block
 	size_t size;
 	struct meta_block *next;
 	int free;
-
 	union
 	{
 		long l;
@@ -30,7 +29,6 @@ struct meta_block
 		double d;
 		long double ld;
 	} align;
-
 };
 
 void *_malloc(size_t size);
