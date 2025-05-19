@@ -54,24 +54,15 @@ void *_malloc(size_t size)
 		block = find_free_block(&last, size);
 		if (!block)
 		{
-			return NULL;
+			block = request_space(last, size);
+			if (!block)
+			{
+				return NULL;
+			}
 		}
 		else
 		{
-			struct meta_block *last = global_base;
-			block = find_free_block(&last, size);
-			if (!block)
-			{
-				block = request_space(last, size);
-				if (!block)
-				{
-					return NULL;
-				}
-			}
-			else
-			{
-				block->free = 0;
-			}
+			block->free = 0
 		}
 	}
 	return (block + 1);
