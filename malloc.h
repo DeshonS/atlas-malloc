@@ -1,3 +1,6 @@
+#ifndef MALLOC_H
+#define MALLOC_H
+
 #include <assert.h>
 #include <string.h>
 #include <sys/types.h>
@@ -29,3 +32,5 @@ struct meta_block {
 void *_malloc(size_t size);
 struct meta_block *request_space(struct meta_block* last, size_t size);
 struct meta_block *find_free_block(struct meta_block **last, size_t size);
+
+#endif
