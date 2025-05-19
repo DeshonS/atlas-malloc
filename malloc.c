@@ -59,10 +59,10 @@ void *_malloc(size_t size)
 		struct meta_block *last = global_base;
 		block = find_free_block(&last, size);
 
-
 		if (!block)
 		{
 			block = request_space(last, size);
+
 			if (!block)
 			{
 				return (NULL);

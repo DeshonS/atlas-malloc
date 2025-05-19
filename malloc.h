@@ -28,6 +28,7 @@ struct meta_block
 		void *p;
 		double d;
 		long double ld;
+
 	} align;
 };
 
