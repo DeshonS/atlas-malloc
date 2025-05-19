@@ -11,7 +11,7 @@ struct meta_block *find_free_block(struct meta_block **last, size_t size)
 		*last = current;
 		current = current->next;
 	}
-	return current;
+	return (current);
 }
 
 struct meta_block *request_space(struct meta_block *last, size_t size)
@@ -34,22 +34,23 @@ struct meta_block *request_space(struct meta_block *last, size_t size)
 	block->size = size;
 	block->next = NULL;
 	block->free = 0;
-	return block;
+	return (block);
 }
 
 void *_malloc(size_t size)
 {
 	struct meta_block *block;
+
 	if (size <= 0)
 	{
-		return NULL;
+		return (NULL);
 	}
 	if (!global_base)
 	{
 		block = request_space(NULL, size);
 		if (!block)
 		{
-			return NULL;
+			return (NULL);
 		}
 		global_base = block;
 	}
@@ -57,12 +58,13 @@ void *_malloc(size_t size)
 	{
 		struct meta_block *last = global_base;
 		block = find_free_block(&last, size);
+	
 		if (!block)
 		{
 			block = request_space(last, size);
 			if (!block)
 			{
-				return NULL;
+				return (NULL);
 			}
 		}
 		else
@@ -70,5 +72,5 @@ void *_malloc(size_t size)
 			block->free = 0;
 		}
 	}
-	return (void *)((char *)block + META_SIZE);
+	return ((void *)((char *)block + META_SIZE));
 }
