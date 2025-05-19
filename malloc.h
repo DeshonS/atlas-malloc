@@ -3,13 +3,17 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stddef.h>
-#include <stdalign.h>
 
 struct meta_block {
 	size_t size;
 	struct meta_block *next;
 	int free;
-	alignas(max_align_t) char _align_pad;
+	union {
+        long l;
+        void *p;
+        double d;
+        long double ld;
+    } align;
 };
 
 #define META_SIZE sizeof(struct meta_block)
