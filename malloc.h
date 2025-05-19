@@ -28,8 +28,8 @@ struct meta_block
 		void *p;
 		double d;
 		long double ld;
-
 	} align;
+
 };
 
 void *_malloc(size_t size);

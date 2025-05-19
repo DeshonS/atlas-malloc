@@ -57,6 +57,7 @@ void *_malloc(size_t size)
 	else
 	{
 		struct meta_block *last = global_base;
+
 		block = find_free_block(&last, size);
 
 		if (!block)
