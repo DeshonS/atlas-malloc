@@ -30,7 +30,7 @@ struct meta_block *request_space(struct meta_block* last, size_t size)
 	return block;
 }
 
-void *malloc(size_t size)
+void *_malloc(size_t size)
 {
 	struct meta_block *block;
 	if (size <= 0)
