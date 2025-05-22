@@ -19,7 +19,7 @@
 #define META_SIZE ALIGN_UP(sizeof(struct meta_block), ALIGNMENT)
 
 /**
- * meta_block - A structure to represent a block of memory.
+ * struct meta_block - A structure to represent a block of memory.
  * @size: The size of the block.
  * @next: A pointer to the next block.
  * @free: A flag indicating if the block is free or not.
