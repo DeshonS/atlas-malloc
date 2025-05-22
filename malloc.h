@@ -23,6 +23,7 @@
  * @size: The size of the block.
  * @next: A pointer to the next block.
  * @free: A flag indicating if the block is free or not.
+ * @_align_pad: Padding to ensure proper alignment.
  */
 
 struct meta_block
