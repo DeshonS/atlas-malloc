@@ -2,6 +2,13 @@
 
 void *global_base = NULL;
 
+/**
+ * find_free_block - Attempts to find a free block of memory that is large enough to satisfy the requested size.
+ * @list: A pointer to the last block in the linked list.
+ * @size: The size of memory requested.
+ * Return: A pointer to the free block, or NULL if no suitable block is found.
+ */
+
 struct meta_block *find_free_block(struct meta_block **last, size_t size)
 {
 	struct meta_block *current = global_base;
@@ -13,6 +20,13 @@ struct meta_block *find_free_block(struct meta_block **last, size_t size)
 	}
 	return (current);
 }
+
+/**
+ * request_space - Requests a new block of memory from the system.
+ * @last: A pointer to the last block in the linked list.
+ * @size: The size of memory requested.
+ * Return: A pointer to the new block of memory, or NULL if the request fails.
+ */
 
 struct meta_block *request_space(struct meta_block *last, size_t size)
 {
@@ -36,6 +50,12 @@ struct meta_block *request_space(struct meta_block *last, size_t size)
 	block->free = 0;
 	return (block);
 }
+
+/**
+ * _malloc - Allocates memory of the specified size.
+ * @size: The size of memory requested.
+ * Return: A pointer to the allocated memory, or NULL if the allocation fails.
+ */
 
 void *_malloc(size_t size)
 {
