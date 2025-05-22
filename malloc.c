@@ -4,7 +4,7 @@ void *global_base = NULL;
 
 /**
  * find_free_block - Attempts to find a free block of memory that meets size.
- * @list: A pointer to the last block in the linked list.
+ * @last: A pointer to the last block in the linked list.
  * @size: The size of memory requested.
  * Return: A pointer to the free block, or NULL if no suitable block is found.
  */
